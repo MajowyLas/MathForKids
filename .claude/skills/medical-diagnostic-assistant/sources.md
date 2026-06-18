@@ -40,8 +40,21 @@ dana informacja.
 1. Preferuj źródła zaktualizowane w ostatnich latach; jeśli strona ma
    widoczną datę publikacji/aktualizacji, zwróć na to uwagę.
 2. W razie sprzeczności między źródłami zaznacz to wprost, nie wybieraj
-   arbitralnie jednej wersji bez komentarza.
+   arbitralnie jednej wersji bez komentarza (przykład: godziny działania
+   linii kryzysowej 116 123 są podawane różnie w różnych źródłach — patrz
+   `red_flags.md`).
 3. Nie cytuj forów, blogów, mediów społecznościowych ani stron sprzedażowych
    suplementów/leków jako źródła wiedzy klinicznej.
 4. Jeśli nie udało się zweryfikować informacji w wiarygodnym źródle, powiedz
    to wprost, zamiast zgadywać.
+
+## Uwaga techniczna: WebFetch vs WebSearch
+
+Wiele domen medycznych (np. nhs.uk, cdc.gov, heart.org, mayoclinic.org)
+blokuje bezpośrednie żądania `WebFetch` (HTTP 403) dla ruchu automatycznego.
+W praktyce lepiej działa `WebSearch` — zwraca fragmenty treści wraz z
+linkami źródłowymi i nie jest blokowany. Traktuj `WebFetch` jako uzupełnienie
+(np. dla stron, które go nie blokują), a `WebSearch` jako domyślne narzędzie
+do weryfikacji wytycznych medycznych. Zawsze podawaj link do źródła w
+odpowiedzi, nawet jeśli pochodzi z fragmentu wyszukiwania, a nie z pełnej
+treści strony.
