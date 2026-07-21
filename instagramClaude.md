@@ -119,13 +119,20 @@ Skrypt/tool: po podaniu jednego konta IG pobiera dane z ostatnich 30/90 dni i ge
 najlepsze godziny, trend obserwujących, rekomendacje na następny miesiąc).
 Demo najpierw na **własnym koncie**, zanim dotknę konta klientki.
 
+### ✅ Decyzja architektoniczna: ścieżka dostępu do danych
+**Standard = Instagram API with Instagram Login (bez Facebooka).** Jedna ścieżka dla
+wszystkich klientek — nie utrzymujemy dwóch.
+- Wymaga tylko konta **Business/Creator** (mają go wszystkie klientki, 100%). FB-page
+  nieistotne → znika najbardziej upierdliwa zmienna onboardingu.
+- Klientka loguje się przez sam Instagram → jeden powtarzalny proces dla każdej.
+- Daje wszystko, czego potrzebuje raport: zasięgi, wyświetlenia, zaangażowanie,
+  najlepsze godziny, metryki per post, dane o odbiorcach.
+- **Klasyczna Graph API (przez FB) = tylko awaryjnie**, gdyby konkretna klientka
+  potrzebowała czegoś dostępnego wyłącznie tam (rzadkość, nie dotyczy standardu).
+
 ### ⚠️ Do zweryfikowania na starcie (blokery techniczne)
-- [ ] **Ścieżka dostępu do danych** — którą wybieramy:
-  - Instagram Graph API (klasyczna) — wymaga podpięcia konta pod **stronę na Facebooku**, pełna analityka.
-  - Instagram API with Instagram Login (nowsza) — **bez FB**, wystarczy konto Business/Creator, zakres bywa węższy.
-  - *Konto Business/Creator mają wszystkie klientki (100%). FB-page = do sprawdzenia.*
 - [ ] Konto deweloperskie Meta + aplikacja (mam / zakładam od zera?)
-- [ ] Mechanizm jednorazowej zgody klientki (OAuth) + przechowywanie tokenu
+- [ ] Mechanizm jednorazowej zgody klientki (OAuth / Instagram Login) + przechowywanie tokenu
 
 ### 🔐 Zgoda klientki i onboarding (ważne)
 **Zgoda na dostęp do danych jest obowiązkowa i stała — per klientka.** To prywatne dane
