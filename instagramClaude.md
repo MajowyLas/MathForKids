@@ -127,6 +127,24 @@ Demo najpierw na **własnym koncie**, zanim dotknę konta klientki.
 - [ ] Konto deweloperskie Meta + aplikacja (mam / zakładam od zera?)
 - [ ] Mechanizm jednorazowej zgody klientki (OAuth) + przechowywanie tokenu
 
+### 🔐 Zgoda klientki i onboarding (ważne)
+**Zgoda na dostęp do danych jest obowiązkowa i stała — per klientka.** To prywatne dane
+(statystyki, zasięgi, odbiorcy); żadne narzędzie nie sięgnie po nie bez wyraźnej zgody.
+To nie wada — to cecha i sygnał uczciwości (klientka świadomie zezwala i może cofnąć).
+
+**Wysiłek po stronie klientki = niewielki.** Cały ciężar setupu jest po mojej stronie
+(raz, przy zakładaniu aplikacji), nie po jej.
+
+- **Faza demo (siostra):** ręczne dodanie jako rola/tester — jednorazowa niedogodność
+  tylko na etapie deweloperskim.
+- **Faza produkcyjna:** wysyłam klientce **jeden link → klika „Zezwól" → koniec.**
+  Standardowe „Zaloguj się przez Instagram", które zna z innych aplikacji.
+  Token ważny ~60 dni (odnawialny) → pytam **raz**, nie przy każdym raporcie.
+
+**Onboarding klientki:** (1) kupuje raport/subskrypcję → (2) dostaje link „połącz konto",
+jeden klik → (3) produkuję raporty bez ponownego pytania (aż token wygaśnie / cofnie zgodę).
+Argument sprzedażowy: „ode mnie gotowe, Ty tylko klikasz «połącz»".
+
 ### Decyzje do podjęcia
 - [ ] Forma operowania: Claude Code / prosty skrypt / mini-UI
 - [ ] Deliverable na start: sam PDF / sam plik danych / oba
