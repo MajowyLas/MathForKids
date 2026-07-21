@@ -82,6 +82,59 @@
 
 ---
 
+## 🛠️ Pomysł produktowy: Raporty AI dla Instagrama
+
+> Roboczy spec. Jedno narzędzie (pipeline), trzy–cztery poziomy sprzedaży.
+
+### Zasada nadrzędna
+**Ja operuję narzędziem — klientka dostaje gotowy deliverable.** Klientka niczego nie
+instaluje ani nie uczy się obsługi (poza najwyższą, technyczną półką). To wprost
+odpowiada jej bólowi: „nie ma czasu ani energii uczyć się kolejnego narzędzia".
+
+### Architektura (jedno źródło, wiele wyjść)
+Jeden pipeline:
+`pobierz dane z IG → (a) czysty plik danych .xlsx/.csv + (b) zredagowany raport .pdf/.html z interpretacją`
+
+Interpretację („co z tych liczb wynika") drafuje Claude, ja zatwierdzam i nadaję ton
+→ *AI tam, gdzie pomaga, głos zostaje mój.*
+
+### Drabinka oferty
+
+| Poziom | Co dostaje klientka | Kto operuje | Rola |
+|---|---|---|---|
+| **1. Raport** (wejście) | PDF z wnioskami + plik danych | Ja produkuję | walidacja, niski próg |
+| **2. Subskrypcja raportu** | To samo, co miesiąc | Ja produkuję | powracający przychód |
+| **3. Sesja „rozmowa z danymi"** (premium) | Wspólna sesja, gdzie AI odpowiada na pytania do jej danych — nic nie instaluje | Ja prowadzę MCP | najwyższa wartość, mój czas |
+| **4. Własny MCP** (nisza, „konsultacja + setup + tool") | Spakowany MCP dla klientek, które *chcą* same grzebać | Klientka (mniejszość) | dla technicznie ogarniętych; bariera instalacji = powód, by zapłacić za setup |
+
+### MCP — dwa różne warianty (ważne rozróżnienie)
+- **MCP-A: rozmowa z gotowym plikiem danych (snapshot).** Łatwe i bezpieczne — brak
+  żywego dostępu do API, tokenów, weryfikacji Meta. To wersja na start (poziom 3 i 4).
+- **MCP-B: rozmowa z żywymi danymi z API.** Potężniejsze, ale cięższe (tokeny, zgody,
+  utrzymanie). Przyszłość, nie MVP.
+
+### MVP (pierwszy krok)
+Skrypt/tool: po podaniu jednego konta IG pobiera dane z ostatnich 30/90 dni i generuje
+**plik xlsx + raport PDF** z 5–7 wnioskami po ludzku (najlepsze/najgorsze posty,
+najlepsze godziny, trend obserwujących, rekomendacje na następny miesiąc).
+Demo najpierw na **własnym koncie**, zanim dotknę konta klientki.
+
+### ⚠️ Do zweryfikowania na starcie (blokery techniczne)
+- [ ] **Ścieżka dostępu do danych** — którą wybieramy:
+  - Instagram Graph API (klasyczna) — wymaga podpięcia konta pod **stronę na Facebooku**, pełna analityka.
+  - Instagram API with Instagram Login (nowsza) — **bez FB**, wystarczy konto Business/Creator, zakres bywa węższy.
+  - *Konto Business/Creator mają wszystkie klientki (100%). FB-page = do sprawdzenia.*
+- [ ] Konto deweloperskie Meta + aplikacja (mam / zakładam od zera?)
+- [ ] Mechanizm jednorazowej zgody klientki (OAuth) + przechowywanie tokenu
+
+### Decyzje do podjęcia
+- [ ] Forma operowania: Claude Code / prosty skrypt / mini-UI
+- [ ] Deliverable na start: sam PDF / sam plik danych / oba
+- [ ] Doprecyzowanie poziomu 4 (pakiet „konsultacja + setup") — po pierwszych klientkach
+- [ ] Model cenowy dla każdego poziomu
+
+---
+
 ## 📌 Do dalszej pracy (backlog)
 
 - [ ] Dopracować bio na Instagram (wersja krótka + długa)
